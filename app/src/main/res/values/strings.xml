@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EventsGraphQL</string>
+    <string name="action_save">Save</string>
+</resources>
