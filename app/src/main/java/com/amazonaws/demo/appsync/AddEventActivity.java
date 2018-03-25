@@ -33,8 +33,12 @@ public class AddEventActivity extends AppCompatActivity {
         time = (EditText)findViewById(R.id.time);
         where = (EditText)findViewById(R.id.where);
         description = (EditText)findViewById(R.id.description);
-    }
 
+        name.setText("Lunch");
+        time.setText("12:30 pm");
+        where.setText("Desk");
+        description.setText("Grab a burger.");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,14 +60,16 @@ public class AddEventActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void save(){
+    private void save() {
         String nameString = name.getText().toString();
         String timeString = time.getText().toString();
         String upsString = where.getText().toString();
         String descriptionString = description.getText().toString();
 
+        // Get the client instance
         AWSAppSyncClient awsAppSyncClient = ClientFactory.getInstance(this.getApplicationContext());
 
+        // Create the mutation request
         AddEventMutation addEventMutation = AddEventMutation.builder()
                 .name(nameString)
                 .when(timeString)
@@ -71,6 +77,7 @@ public class AddEventActivity extends AppCompatActivity {
                 .description(descriptionString)
                 .build();
 
+        // Enqueue the request (This will execute the request)
         awsAppSyncClient.mutate(addEventMutation).enqueue(addEventsCallback);
     }
 
@@ -82,10 +89,10 @@ public class AddEventActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(), "Could not save", Toast.LENGTH_SHORT).show();
-                        Log.d("Error: ", response.toString());
+                        Log.e(TAG, "Error: " + response.toString());
 
                         for (Error err : response.errors()) {
-                            Log.d("Error: ", err.message());
+                            Log.e(TAG, "Error: " + err.message());
                         }
                         finish();
                     }
@@ -95,6 +102,7 @@ public class AddEventActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Add event succeeded");
                         finish();
                     }
                 });
@@ -103,7 +111,7 @@ public class AddEventActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(@Nonnull ApolloException e) {
-            Log.e(TAG, "failed to make posts api call", e);
+            Log.e(TAG, "Failed to make posts api call", e);
             Log.e(TAG, e.getMessage());
         }
     };

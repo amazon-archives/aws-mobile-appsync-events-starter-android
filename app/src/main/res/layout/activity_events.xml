@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.amazonaws.demo.appsync.EventsActivity">
+    tools:context="com.amazonaws.demo.appsync.ListEventsActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/refresh"

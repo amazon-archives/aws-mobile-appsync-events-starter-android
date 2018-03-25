@@ -86,6 +86,7 @@ public class ViewEventActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(@Nonnull ApolloException e) {
+            Log.e(TAG, "Failed to make comments mutation", e);
             Log.e(TAG, e.getMessage());
         }
     };

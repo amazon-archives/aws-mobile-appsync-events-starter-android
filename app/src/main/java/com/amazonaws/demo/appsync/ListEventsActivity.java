@@ -20,9 +20,9 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-public class EventsActivity extends AppCompatActivity {
+public class ListEventsActivity extends AppCompatActivity {
 
-    private static final String TAG = EventsActivity.class.getSimpleName();
+    private static final String TAG = ListEventsActivity.class.getSimpleName();
 
     private AWSAppSyncClient mAWSAppSyncClient;
 
@@ -41,7 +41,7 @@ public class EventsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EventsActivity.this, AddEventActivity.class);
+                Intent intent = new Intent(ListEventsActivity.this, AddEventActivity.class);
                 startActivity(intent);
             }
         });
