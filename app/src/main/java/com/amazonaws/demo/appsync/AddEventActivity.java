@@ -1,5 +1,8 @@
 package com.amazonaws.demo.appsync;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,11 +11,17 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amazonaws.demo.appsync.fragment.Event;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Error;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
@@ -78,7 +87,25 @@ public class AddEventActivity extends AppCompatActivity {
                 .build();
 
         // Enqueue the request (This will execute the request)
-        awsAppSyncClient.mutate(addEventMutation).enqueue(addEventsCallback);
+        awsAppSyncClient.mutate(addEventMutation).refetchQueries(ListEventsQuery.builder().build()).enqueue(addEventsCallback);
+
+        // Add to event list while offline or before request returns
+        List<Event.Item> items = new ArrayList<>();
+        String tempID = UUID.randomUUID().toString();
+        Event event = new Event("Event", tempID, descriptionString, nameString, timeString, upsString, new Event.Comments("Comment", items));
+        addToListEventsQuery(new ListEventsQuery.Item("Event", new ListEventsQuery.Item.Fragments(event)));
+
+        // Close the add event when offline otherwise allow callback to close
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if (!isConnected) {
+            finish();
+        }
     }
 
     private GraphQLCall.Callback<AddEventMutation.Data> addEventsCallback = new GraphQLCall.Callback<AddEventMutation.Data>() {
@@ -115,4 +142,27 @@ public class AddEventActivity extends AppCompatActivity {
             Log.e(TAG, e.getMessage());
         }
     };
+
+    private void addToListEventsQuery(final ListEventsQuery.Item pendingItem) {
+        final AWSAppSyncClient awsAppSyncClient = ClientFactory.getInstance(this);
+        final ListEventsQuery listEventsQuery = ListEventsQuery.builder().build();
+
+        awsAppSyncClient.query(listEventsQuery)
+                .responseFetcher(AppSyncResponseFetchers.CACHE_ONLY)
+                .enqueue(new GraphQLCall.Callback<ListEventsQuery.Data>() {
+                    @Override
+                    public void onResponse(@Nonnull Response<ListEventsQuery.Data> response) {
+                        List<ListEventsQuery.Item> items = new ArrayList<>();
+                        items.addAll(response.data().listEvents().items());
+                        items.add(pendingItem);
+                        ListEventsQuery.Data data = new ListEventsQuery.Data(new ListEventsQuery.ListEvents("EventConnection", items, null));
+                        awsAppSyncClient.getStore().write(listEventsQuery, data).enqueue(null);
+                    }
+
+                    @Override
+                    public void onFailure(@Nonnull ApolloException e) {
+                        Log.e(TAG, "Failed to update event query list.", e);
+                    }
+                });
+    }
 }
