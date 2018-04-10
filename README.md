@@ -47,13 +47,13 @@ Java code is generated from a schema file (`./app/src/main/graphql/com/amazonaws
 
 If you update your schema in the future, you will find updated versions of these in the AWS AppSync console under the homepage for your GraphQL API when you click the `Android` tab.
 
-### EventsActivity.java (Query)
+### ListEventsActivity.java (Query)
 
-- The `EventsActivity.java` file lists all the events accessible to the user. It returns data from the offline cache first if available and later fetches it from remote to update the local cache.
+- The `ListEventsActivity.java` file lists all the events accessible to the user. It returns data from the offline cache first if available and later fetches it from remote to update the local cache.
 
-### ViewEventActivity.java (Mutation, Query)
+### ViewEventActivity.java (Mutation, Query, Subscription)
 
-- The `ViewEventActivity.java` file lists information about an event and allows new comments to be added.
+- The `ViewEventActivity.java` file lists information about an event and allows new comments to be added. New comments to the event are added while the user is viewing the event via subscriptions.
 
 ### AddEventActivity.java (Mutation)
 
