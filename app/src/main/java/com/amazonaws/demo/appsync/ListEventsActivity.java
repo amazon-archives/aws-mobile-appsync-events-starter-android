@@ -77,7 +77,11 @@ public class ListEventsActivity extends AppCompatActivity {
     private GraphQLCall.Callback<ListEventsQuery.Data> eventsCallback = new GraphQLCall.Callback<ListEventsQuery.Data>() {
         @Override
         public void onResponse(@Nonnull Response<ListEventsQuery.Data> response) {
-            events = response.data().listEvents().items();
+            if (response.data() != null) {
+                events = response.data().listEvents().items();
+            } else {
+                events = new ArrayList<>();
+            }
             adapter.setEvents(events);
             runOnUiThread(new Runnable() {
                 @Override

@@ -93,7 +93,7 @@ public class AddEventActivity extends AppCompatActivity {
         List<Event.Item> items = new ArrayList<>();
         String tempID = UUID.randomUUID().toString();
         Event event = new Event("Event", tempID, descriptionString, nameString, timeString, upsString, new Event.Comments("Comment", items));
-        addToListEventsQuery(new ListEventsQuery.Item("Event", new ListEventsQuery.Item.Fragments(event)));
+        addEventOffline(new ListEventsQuery.Item("Event", new ListEventsQuery.Item.Fragments(event)));
 
         // Close the add event when offline otherwise allow callback to close
         ConnectivityManager cm =
@@ -143,7 +143,7 @@ public class AddEventActivity extends AppCompatActivity {
         }
     };
 
-    private void addToListEventsQuery(final ListEventsQuery.Item pendingItem) {
+    private void addEventOffline(final ListEventsQuery.Item pendingItem) {
         final AWSAppSyncClient awsAppSyncClient = ClientFactory.getInstance(this);
         final ListEventsQuery listEventsQuery = ListEventsQuery.builder().build();
 
@@ -153,7 +153,10 @@ public class AddEventActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@Nonnull Response<ListEventsQuery.Data> response) {
                         List<ListEventsQuery.Item> items = new ArrayList<>();
-                        items.addAll(response.data().listEvents().items());
+                        if (response.data() != null) {
+                            items.addAll(response.data().listEvents().items());
+                        }
+
                         items.add(pendingItem);
                         ListEventsQuery.Data data = new ListEventsQuery.Data(new ListEventsQuery.ListEvents("EventConnection", items, null));
                         awsAppSyncClient.getStore().write(listEventsQuery, data).enqueue(null);
