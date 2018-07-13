@@ -48,6 +48,16 @@
                             "description": "  Paginate through events.",
                             "args": [
                                 {
+                                    "name": "filter",
+                                    "description": null,
+                                    "type": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "TableEventFilterInput",
+                                        "ofType": null
+                                    },
+                                    "defaultValue": null
+                                },
+                                {
                                     "name": "limit",
                                     "description": null,
                                     "type": {
@@ -374,6 +384,297 @@
                     "possibleTypes": null
                 },
                 {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableEventFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "id",
+                            "description": null,
+                            "type": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableIDFilterInput",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "name",
+                            "description": null,
+                            "type": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableStringFilterInput",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "where",
+                            "description": null,
+                            "type": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableStringFilterInput",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "when",
+                            "description": null,
+                            "type": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableStringFilterInput",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "description",
+                            "description": null,
+                            "type": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableStringFilterInput",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableIDFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "ID",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "beginsWith",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableStringFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "beginsWith",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
                     "kind": "OBJECT",
                     "name": "Mutation",
                     "description": null,
@@ -570,6 +871,267 @@
                     ],
                     "inputFields": null,
                     "interfaces": [],
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableFloatFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "Float",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "description": "Built-in Float",
+                    "fields": null,
+                    "inputFields": null,
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableIntFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableBooleanFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "description": "Built-in Boolean",
+                    "fields": null,
+                    "inputFields": null,
+                    "interfaces": null,
                     "enumValues": null,
                     "possibleTypes": null
                 },
@@ -1088,16 +1650,6 @@
                     "possibleTypes": null
                 },
                 {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "description": "Built-in Boolean",
-                    "fields": null,
-                    "inputFields": null,
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
                     "kind": "OBJECT",
                     "name": "__EnumValue",
                     "description": null,
@@ -1324,61 +1876,67 @@
                         },
                         {
                             "name": "SCHEMA",
-                            "description": "Indicates the directive is valid on a schema IDL definition.",
+                            "description": "Indicates the directive is valid on a schema SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "SCALAR",
-                            "description": "Indicates the directive is valid on a scalar IDL definition.",
+                            "description": "Indicates the directive is valid on a scalar SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "OBJECT",
-                            "description": "Indicates the directive is valid on an object IDL definition.",
+                            "description": "Indicates the directive is valid on an object SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "FIELD_DEFINITION",
-                            "description": "Indicates the directive is valid on a field IDL definition.",
+                            "description": "Indicates the directive is valid on a field SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "ARGUMENT_DEFINITION",
-                            "description": "Indicates the directive is valid on a field argument IDL definition.",
+                            "description": "Indicates the directive is valid on a field argument SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "INTERFACE",
-                            "description": "Indicates the directive is valid on an interface IDL definition.",
+                            "description": "Indicates the directive is valid on an interface SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "UNION",
-                            "description": "Indicates the directive is valid on an union IDL definition.",
+                            "description": "Indicates the directive is valid on an union SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "ENUM",
-                            "description": "Indicates the directive is valid on an enum IDL definition.",
+                            "description": "Indicates the directive is valid on an enum SDL definition.",
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "ENUM_VALUE",
+                            "description": "Indicates the directive is valid on an enum value SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "INPUT_OBJECT",
-                            "description": "Indicates the directive is valid on an input object IDL definition.",
+                            "description": "Indicates the directive is valid on an input object SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
                             "name": "INPUT_FIELD_DEFINITION",
-                            "description": "Indicates the directive is valid on an input object field IDL definition.",
+                            "description": "Indicates the directive is valid on an input object field SDL definition.",
                             "isDeprecated": false,
                             "deprecationReason": null
                         }
@@ -1432,6 +1990,33 @@
                     "onOperation": false,
                     "onFragment": true,
                     "onField": true
+                },
+                {
+                    "name": "defer",
+                    "description": "This directive allows results to be deferred during execution",
+                    "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": true
+                },
+                {
+                    "name": "deprecated",
+                    "description": null,
+                    "args": [
+                        {
+                            "name": "reason",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": "\"No longer supported\""
+                        }
+                    ],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
                 },
                 {
                     "name": "aws_auth",
