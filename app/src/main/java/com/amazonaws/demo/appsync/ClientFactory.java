@@ -2,6 +2,7 @@ package com.amazonaws.demo.appsync;
 
 import android.content.Context;
 
+import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.amazonaws.mobileconnectors.appsync.sigv4.BasicAPIKeyAuthProvider;
 
@@ -10,11 +11,11 @@ public class ClientFactory {
 
     public synchronized static AWSAppSyncClient getInstance(Context context) {
         if (client == null) {
+            AWSConfiguration awsConfig = new AWSConfiguration(context);
+
             client = AWSAppSyncClient.builder()
                     .context(context)
-                    .apiKey(new BasicAPIKeyAuthProvider(Constants.APPSYNC_API_KEY))
-                    .region(Constants.APPSYNC_REGION)
-                    .serverUrl(Constants.APPSYNC_ENDPOINT)
+                    .awsConfiguration(awsConfig)
                     .build();
         }
         return client;
