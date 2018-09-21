@@ -21,7 +21,7 @@ This is a Starter application for using the Sample app in the AWS AppSync consol
 
 1. Navigate to the AWS AppSync console using the URL: http://console.aws.amazon.com/appsync/home
 
-2. Click on `Create API` and select the `Sample Schema` option. Enter a API name of your choice. Click `Create`.
+2. Click on `Create API` and select the `Event App` under the `sample project` in the bottom pane, and select `Start`. Enter a API name of your choice. Click `Create`.
 
 ## Android Setup
 
@@ -35,9 +35,9 @@ This is a Starter application for using the Sample app in the AWS AppSync consol
 
 3. Inside Android Studio, choose the menu `Tools > Android > Sync Project with Gradle Files` to ensure gradle is up to date and wait until this completes.
 
-4. From the homepage of your GraphQL API (you can click the name you entered in the left hand navigation) wait until the progress bar at the top has completed deploying your resources. 
+4. Wait until the progress bar at the top has completed deploying your resources. Then from the integration page of your GraphQL API (you can click the name you entered in the left hand navigation). 
 
-	On this same page, the `API Details` box at the top of the page will contain the `API URL` and `API Key` that you will paste into the `Constants.java` file.
+On this same page, select `Android` at the bottom to download your `awsconfiguration.json` configuration file by clicking the **Download Config** button. Replace the `awsconfiguration.json` file in the `src/main/res/raw` folder of your app with the file you just downloaded.
 
 ## Application walkthrough
 
@@ -45,7 +45,7 @@ This is a Starter application for using the Sample app in the AWS AppSync consol
 
 Java code is generated from a schema file (`./app/src/main/graphql/com/amazonaws/demo/appsync/schema.json`) and a .graphql file (`/app/src/main/graphql/com/amazonaws/demo/appsync/events.graphql`) based on your API. The generated source is in the `./app/build/generated/source/appsync` folder of this project after a build is completed.
 
-If you update your schema in the future, you will find updated versions of these in the AWS AppSync console under the homepage for your GraphQL API when you click the `Android` tab.
+If you update your schema in the future, you should use the [AWS Amplify CLI](https://aws-amplify.github.io/) codegen feature to automatically download and update your queries, mutations, subscriptions and the schema. For a tutorial of this, [click here](https://github.com/aws-amplify/amplify-cli/blob/master/native_guide.md).
 
 ### ListEventsActivity.java (Query)
 
