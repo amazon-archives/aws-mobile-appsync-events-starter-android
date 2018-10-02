@@ -59,6 +59,10 @@ If you update your schema in the future, you should use the [AWS Amplify CLI](ht
 
 - The `AddEventActivity.java` file creates a new event using the details entered on screen.
 
+## Getting Help
+
+We use [AppSync Android SDK GitHub issues](https://github.com/awslabs/aws-mobile-appsync-sdk-android/issues) for tracking questions, bugs, and feature requests.
+
 ## License
 
 This library is licensed under the Amazon Software License.
