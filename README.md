@@ -33,9 +33,52 @@ This is a Starter application for using the Sample app in the AWS AppSync consol
 
 2. Open Android Studio, choose `Import project` navigate to the repository folder that was cloned and select open.
 
-3. Inside Android Studio, choose the menu `Tools > Android > Sync Project with Gradle Files` to ensure gradle is up to date and wait until this completes.
+3. Ensure that the project's `build.gradle` has the following dependency in the build script:
 
-4. Wait until the progress bar at the top has completed deploying your resources. Then from the integration page of your GraphQL API (you can click the name you entered in the left hand navigation). 
+```bash
+    classpath 'com.amazonaws:aws-android-sdk-appsync-gradle-plugin:2.7.+'
+```
+
+4. Ensure that the app's build.gradle has the appsync plugin and dependencies on the appsync and paho libraries. For example:
+
+```bash
+    apply plugin: 'com.android.application'
+    apply plugin: 'com.amazonaws.appsync'
+    android {
+        // Typical items
+    }
+    dependencies {
+        // Typical dependencies
+        implementation 'com.amazonaws:aws-android-sdk-appsync:2.7.+'
+        implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+        implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    }
+```
+
+5. Ensure that the AndroidManifest.xml has the appropriate permissions setup and has the calls and offline state. Also, add a `<service>` entry under `<application>` for `MqttService` to use subscriptions:
+
+```xml
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+            <!--other config-->
+
+        <application>
+
+            <service android:name="org.eclipse.paho.android.service.MqttService" />
+
+            <!--other config-->
+        </application>
+```
+
+
+6. Inside Android Studio, choose the menu `Tools > Android > Sync Project with Gradle Files` to ensure gradle is up to date and wait until this completes.
+
+7. Wait until the progress bar at the top has completed deploying your resources. Then from the integration page of your GraphQL API (you can click the name you entered in the left hand navigation). 
 
 On this same page, select `Android` at the bottom to download your `awsconfiguration.json` configuration file by clicking the **Download Config** button. Replace the `awsconfiguration.json` file in the `src/main/res/raw` folder of your app with the file you just downloaded.
 
