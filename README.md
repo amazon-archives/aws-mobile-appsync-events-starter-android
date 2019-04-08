@@ -108,4 +108,4 @@ We use [AppSync Android SDK GitHub issues](https://github.com/awslabs/aws-mobile
 
 ## License
 
-This library is licensed under the Amazon Software License.
+This sample code is made available under the MIT-0 license. See the LICENSE file.
