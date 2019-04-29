@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.awsVersion = '2.6.+'
+    ext.awsVersion = '2.8.+'
     repositories {
         jcenter()
         mavenCentral()
