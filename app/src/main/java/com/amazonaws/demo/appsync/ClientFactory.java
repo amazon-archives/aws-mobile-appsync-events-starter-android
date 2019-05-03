@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
-import com.amazonaws.mobileconnectors.appsync.sigv4.BasicAPIKeyAuthProvider;
 
 public class ClientFactory {
     private static volatile AWSAppSyncClient client;
