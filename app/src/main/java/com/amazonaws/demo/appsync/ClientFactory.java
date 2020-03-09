@@ -5,10 +5,10 @@ import android.content.Context;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 
-public class ClientFactory {
+class ClientFactory {
     private static volatile AWSAppSyncClient client;
 
-    public synchronized static AWSAppSyncClient getInstance(Context context) {
+    synchronized static AWSAppSyncClient getInstance(Context context) {
         if (client == null) {
             AWSConfiguration awsConfig = new AWSConfiguration(context);
 

@@ -11,14 +11,12 @@ import java.util.List;
 
 public class EventsAdapter extends BaseAdapter {
 
-    private final Context mContext;
     private LayoutInflater mInflater;
     private List<ListEventsQuery.Item> events;
 
-    public EventsAdapter(Context context, List<ListEventsQuery.Item> events){
-        this.mContext = context;
+    EventsAdapter(Context context, List<ListEventsQuery.Item> events){
         this.events = events;
-        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public void setEvents(List<ListEventsQuery.Item> posts){
@@ -72,8 +70,8 @@ public class EventsAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder {
-        public TextView nameTextView;
-        public TextView timeTextView;
-        public TextView whereTextView;
+        TextView nameTextView;
+        TextView timeTextView;
+        TextView whereTextView;
     }
 }
