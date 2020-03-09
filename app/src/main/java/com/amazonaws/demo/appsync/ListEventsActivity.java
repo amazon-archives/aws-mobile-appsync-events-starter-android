@@ -27,7 +27,6 @@ public class ListEventsActivity extends AppCompatActivity {
     private AWSAppSyncClient mAWSAppSyncClient;
 
     private List<ListEventsQuery.Item> events = new ArrayList<>();
-    private ListView mListView;
     private EventsAdapter adapter;
 
     @Override
@@ -55,7 +54,7 @@ public class ListEventsActivity extends AppCompatActivity {
         });
 
         adapter = new EventsAdapter(this, events);
-        mListView = (ListView) findViewById(R.id.postsList);
+        ListView mListView = (ListView) findViewById(R.id.postsList);
         mListView.setAdapter(adapter);
     }
 

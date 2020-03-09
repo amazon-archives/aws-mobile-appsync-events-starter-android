@@ -28,7 +28,7 @@ public class ViewEventActivity extends AppCompatActivity {
     public static final String TAG = ViewEventActivity.class.getSimpleName();
 
     private static Event event;
-    private TextView name, time, where, description, comments;
+    private TextView comments;
     private EditText newComment;
     private AppSyncSubscriptionCall<NewCommentOnEventSubscription.Data> subscriptionWatcher;
 
@@ -43,10 +43,10 @@ public class ViewEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_event);
 
-        name = (TextView) findViewById(R.id.viewName);
-        time = (TextView) findViewById(R.id.viewTime);
-        where = (TextView) findViewById(R.id.viewWhere);
-        description = (TextView) findViewById(R.id.viewDescription);
+        TextView name = (TextView) findViewById(R.id.viewName);
+        TextView time = (TextView) findViewById(R.id.viewTime);
+        TextView where = (TextView) findViewById(R.id.viewWhere);
+        TextView description = (TextView) findViewById(R.id.viewDescription);
         comments = (TextView) findViewById(R.id.comments);
         newComment = (EditText) findViewById(R.id.new_comment);
 
